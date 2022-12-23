@@ -1,4 +1,4 @@
-package com.stathis.unipiaudiostories.features.intro
+package com.stathis.unipiaudiostories.ui.main.intro
 
 import androidx.lifecycle.ViewModel
 

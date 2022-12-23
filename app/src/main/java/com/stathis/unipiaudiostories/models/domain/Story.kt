@@ -1,4 +1,4 @@
-package com.stathis.unipiaudiostories.models
+package com.stathis.unipiaudiostories.models.domain
 
 import com.stathis.unipiaudiostories.abstraction.UiModel
 
