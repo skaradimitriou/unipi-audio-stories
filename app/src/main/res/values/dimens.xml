@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App General Dimensions -->
+
+    <dimen name="dimen_xs">4dp</dimen>
+    <dimen name="dimen_s">8dp</dimen>
+    <dimen name="dimen_m">16dp</dimen>
+    <dimen name="dimen_l">24dp</dimen>
+    <dimen name="dimen_xl">32dp</dimen>
+    <dimen name="dimen_2xl">64dp</dimen>
+
+
+
+    <dimen name="dimen_10">10dp</dimen>
+
+
+</resources>

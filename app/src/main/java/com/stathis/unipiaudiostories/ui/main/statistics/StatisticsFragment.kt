@@ -10,7 +10,7 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>(R.layout.frag
     private val viewModel: StatisticsViewModel by viewModels()
 
     override fun init() {
-        //
+        requireActivity().title = "Statistics"
     }
 
     override fun startOps() {

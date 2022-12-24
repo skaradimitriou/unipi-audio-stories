@@ -3,6 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- BottomSheet Menu -->
+    <string name="menu_stories">Ιστορίες</string>
+    <string name="menu_statistics">Στατιστικά</string>
+
     <!-- Login Screen -->
 
 
@@ -10,7 +14,7 @@
 
 
     <!-- Main Dashboard Screen -->
-
+    <string name="stories_title">Παιδικές Ιστορίες</string>
 
     <!-- Story Details Screen -->
 

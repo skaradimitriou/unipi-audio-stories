@@ -4,14 +4,14 @@ import com.stathis.unipiaudiostories.models.data.StoryDto
 import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.util.toNotNull
 
-object StoryMapper : Mapper<StoryDto?, Story> {
+object StoryMapper : Mapper<List<StoryDto?>?, List<Story>> {
 
-    override fun fromDataToDomainModel(dataModel: StoryDto?): Story {
-        return dataModel.toDomainModel()
+    override fun fromDataToDomainModel(dataModel: List<StoryDto?>?): List<Story> {
+        return dataModel?.map { it.toDomainModel() } ?: listOf()
     }
 
-    override fun fromDomainToDataModel(domainModel: Story): StoryDto? {
-        return domainModel.toDataModel()
+    override fun fromDomainToDataModel(domainModel: List<Story>): List<StoryDto?>? {
+        return domainModel.map { it.toDataModel() }
     }
 
     private fun StoryDto?.toDomainModel(): Story = Story(

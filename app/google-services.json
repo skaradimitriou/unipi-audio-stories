@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "792514194581",
+    "firebase_url": "https://unipi-audio-stories-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "unipi-audio-stories",
+    "storage_bucket": "unipi-audio-stories.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792514194581:android:0b1031c9e6c887e93f7f9c",
+        "android_client_info": {
+          "package_name": "com.stathis.unipiaudiostories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792514194581-66gb41p6s7mft5qnahk85fhui54t99sb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDardcpdwwYodSg41vNHB-yhtsSX_vUv10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792514194581-66gb41p6s7mft5qnahk85fhui54t99sb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

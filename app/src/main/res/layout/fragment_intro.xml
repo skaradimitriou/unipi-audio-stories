@@ -2,15 +2,27 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.stathis.unipiaudiostories.ui.main.intro.IntroViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#e5e5e5"
         tools:context=".ui.main.intro.IntroFragment">
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/storiesRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:adapter="@{viewModel.adapter}"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/dimen_xl"
+            tools:itemCount="5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
