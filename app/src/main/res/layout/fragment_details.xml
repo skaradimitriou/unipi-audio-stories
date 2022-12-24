@@ -14,13 +14,14 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/grey_bg"
         app:layoutDescription="@xml/fragment_details_xml_constraintlayout2_scene"
         tools:context=".ui.main.details.DetailsFragment">
 
         <ImageView
             android:id="@+id/storyImgView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/dimen_200"
             android:scaleType="centerCrop"
             app:imageFromUrl="@{model.image}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingBottom="@dimen/dimen_2xl"
+            android:paddingBottom="@dimen/dimen_100"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/storyImgView">
 
@@ -80,5 +81,17 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/playStoryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_play"
+            android:backgroundTint="@color/design_default_color_primary"
+            app:tint="@null"
+            android:layout_margin="@dimen/dimen_l"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

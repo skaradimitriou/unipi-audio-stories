@@ -23,3 +23,12 @@ fun ImageView.setImageFromUrl(url: String?) {
 fun TextView.setStoryAdditionals(author: String?, year: Int?) {
     text = "$author | $year"
 }
+
+@BindingAdapter("setStoryButton")
+fun ImageView.setStoryButton(isPlaying: Boolean) {
+    if (isPlaying) {
+        setImageResource(R.drawable.ic_stop)
+    } else {
+        setImageResource(R.drawable.ic_play)
+    }
+}

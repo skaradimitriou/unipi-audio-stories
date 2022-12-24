@@ -10,9 +10,9 @@
     <dimen name="dimen_xl">32dp</dimen>
     <dimen name="dimen_2xl">64dp</dimen>
 
-
-
     <dimen name="dimen_10">10dp</dimen>
-
+    <dimen name="dimen_100">100dp</dimen>
+    <dimen name="dimen_200">200dp</dimen>
+    <dimen name="dimen_70">70dp</dimen>
 
 </resources>

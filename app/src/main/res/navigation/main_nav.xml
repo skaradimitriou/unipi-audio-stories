@@ -15,7 +15,11 @@
     <fragment
         android:id="@+id/nav_play_story"
         android:name="com.stathis.unipiaudiostories.ui.main.play.PlayStoryFragment"
-        android:label="PlayStoryFragment" />
+        android:label="PlayStoryFragment" >
+        <argument
+            android:name="story"
+            app:argType="com.stathis.unipiaudiostories.models.domain.Story" />
+    </fragment>
     <fragment
         android:id="@+id/nav_details"
         android:name="com.stathis.unipiaudiostories.ui.main.details.DetailsFragment"
@@ -23,6 +27,9 @@
         <argument
             android:name="story"
             app:argType="com.stathis.unipiaudiostories.models.domain.Story" />
+        <action
+            android:id="@+id/goToPlayStoryScreen"
+            app:destination="@id/nav_play_story" />
     </fragment>
     <fragment
         android:id="@+id/nav_statistics"
