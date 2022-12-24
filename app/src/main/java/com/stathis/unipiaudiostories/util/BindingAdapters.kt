@@ -3,8 +3,6 @@ package com.stathis.unipiaudiostories.util
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.stathis.unipiaudiostories.R
 

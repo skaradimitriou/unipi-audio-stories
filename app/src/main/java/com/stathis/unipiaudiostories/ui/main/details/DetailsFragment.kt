@@ -19,7 +19,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
     }
 
     override fun startOps() {
-        binding.testTxtView.text = safeArgs.story.title
+        binding.model = safeArgs.story
     }
 
     override fun stopOps() {
