@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface StoriesDao {
 
-    @Query("SELECT * FROM stories")
+    @Query("SELECT * FROM stories ORDER BY title ASC")
     fun getAllCountries(): Flow<List<Story>>
 
     @Insert

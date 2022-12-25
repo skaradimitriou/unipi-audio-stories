@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/login_nav">
+    android:id="@+id/login_nav"
+    app:startDestination="@id/nav_login">
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.stathis.unipiaudiostories.ui.intro.login.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@+id/goToRegister"
+            app:destination="@id/nav_register" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_register"
+        android:name="com.stathis.unipiaudiostories.ui.intro.register.RegisterFragment"
+        android:label="RegisterFragment">
+        <action
+            android:id="@+id/goToRegister"
+            app:destination="@id/nav_login" />
+    </fragment>
 
 </navigation>
