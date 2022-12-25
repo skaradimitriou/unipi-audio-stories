@@ -2,9 +2,11 @@ package com.stathis.unipiaudiostories.util
 
 import android.graphics.Rect
 import android.view.View
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * Helper method to set the screen title inside a [Fragment] in a more simple way.
@@ -12,6 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 fun Fragment.setScreenTitle(title: String) {
     requireActivity().title = title
+}
+
+fun ViewDataBinding.showSnackbar(message: String) {
+    Snackbar.make(this.root, message, Snackbar.LENGTH_LONG).show()
 }
 
 fun RecyclerView.setVerticalRecycler(topDimen: Int, horizontalDimen: Int) {

@@ -12,3 +12,4 @@ const val STORIES_DB_PATH = "stories"
 
 const val TTS_GR = "ell"
 const val DOT = "."
+const val GENERIC_ERROR = "Κάτι πήγε στραβά"

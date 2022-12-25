@@ -4,41 +4,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthException
+import com.stathis.unipiaudiostories.models.domain.Result
+import com.stathis.unipiaudiostories.util.GENERIC_ERROR
+import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 
 class LoginViewModel : ViewModel() {
 
-    private val auth by lazy { FirebaseAuth.getInstance() }
-
-    val loginResult: LiveData<Boolean>
+    /**
+     * LiveData that holds the Result of the login [FirebaseAuth] transaction.
+     */
+    
+    val loginResult: LiveData<Result>
         get() = _loginResult
 
-    private val _loginResult = MutableLiveData<Boolean>()
+    private val _loginResult = MutableLiveData<Result>()
 
     fun login(email: String, pass: String) {
         viewModelScope.launch(Dispatchers.IO) {
             if (email.isNotEmpty() && pass.isNotEmpty()) {
-                loginUser(email, pass)
+                val result = Authenticator.login(email, pass)
+                _loginResult.postValue(result)
             } else {
-                _loginResult.postValue(false)
+                _loginResult.postValue(Result.Failure(GENERIC_ERROR))
             }
-        }
-    }
-
-    private suspend fun loginUser(email: String, pass: String) {
-        try {
-            val task = auth.signInWithEmailAndPassword(email, pass).await()
-            task.user?.let {
-                _loginResult.postValue(true)
-            } ?: run {
-                _loginResult.postValue(false)
-            }
-        } catch (e: FirebaseAuthException) {
-            _loginResult.postValue(false)
         }
     }
 }

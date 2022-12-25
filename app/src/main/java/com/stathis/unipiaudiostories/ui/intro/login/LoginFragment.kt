@@ -6,7 +6,9 @@ import androidx.navigation.fragment.findNavController
 import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentLoginBinding
+import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.ui.main.MainActivity
+import com.stathis.unipiaudiostories.util.showSnackbar
 
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -27,9 +29,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             goToRegisterScreen()
         }
 
-        viewModel.loginResult.observe(viewLifecycleOwner) { isSuccessful ->
-            if(isSuccessful) {
-                goToDashboard()
+        viewModel.loginResult.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Success -> goToDashboard()
+                is Result.Failure -> binding.showSnackbar(result.message)
             }
         }
     }

@@ -5,7 +5,9 @@ import androidx.fragment.app.viewModels
 import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentRegisterBinding
+import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.ui.main.MainActivity
+import com.stathis.unipiaudiostories.util.showSnackbar
 
 
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment_register) {
@@ -23,9 +25,11 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
             viewModel.validateData(email, pass, confirmPass)
         }
 
-        viewModel.userRegistered.observe(viewLifecycleOwner) { registered ->
-            if (registered) goToDashboard()
-            //FIXME: Handle else case later on
+        viewModel.registrationResult.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Success -> goToDashboard()
+                is Result.Failure -> binding.showSnackbar(result.message)
+            }
         }
     }
 

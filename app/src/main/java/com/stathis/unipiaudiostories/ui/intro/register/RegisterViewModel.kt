@@ -4,41 +4,32 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseAuth
+import com.stathis.unipiaudiostories.models.domain.Result
+import com.stathis.unipiaudiostories.util.GENERIC_ERROR
+import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 
 class RegisterViewModel : ViewModel() {
 
-    private val auth by lazy { FirebaseAuth.getInstance() }
+    /**
+     * LiveData that holds the Result of the registration [FirebaseAuth] transaction.
+     */
 
-    val userRegistered: LiveData<Boolean>
-        get() = _userRegistered
+    val registrationResult: LiveData<Result>
+        get() = _registrationResult
 
-    private val _userRegistered = MutableLiveData<Boolean>()
+    private val _registrationResult = MutableLiveData<Result>()
 
     fun validateData(email: String, pass: String, confirmPass: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val isPassValid = pass == confirmPass && pass.isNotEmpty() && confirmPass.isNotEmpty()
             if (email.isNotEmpty() && isPassValid) {
-                registerUser(email, pass)
+                val result = Authenticator.register(email, pass)
+                _registrationResult.postValue(result)
             } else {
-                _userRegistered.postValue(false)
+                _registrationResult.postValue(Result.Failure(GENERIC_ERROR))
             }
-        }
-    }
-
-    private suspend fun registerUser(email: String, pass: String) {
-        try {
-            val task = auth.createUserWithEmailAndPassword(email, pass).await()
-            task.user?.let {
-                _userRegistered.postValue(true)
-            } ?: run {
-                _userRegistered.postValue(false)
-            }
-        } catch (e: Exception) {
-            _userRegistered.postValue(false)
         }
     }
 }
