@@ -10,6 +10,8 @@ import com.stathis.unipiaudiostories.models.domain.StoryStatistic
 import com.stathis.unipiaudiostories.models.mapper.StoryMapper
 import com.stathis.unipiaudiostories.models.mapper.StoryStatisticMapper
 import com.stathis.unipiaudiostories.util.STORIES_DB_PATH
+import com.stathis.unipiaudiostories.util.USERS_DB_PATH
+import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -38,29 +40,16 @@ class StoryRepositoryImpl(context: Context) : StoryRepository {
     }
 
     override suspend fun getStoryStatistics(): Flow<List<StoryStatistic>> = flow {
-        val statistics = listOf(
-            StoryStatisticDto(
-                storyName = "Παπουτσομένος Γάτος",
-                counter = 2
-            ),StoryStatisticDto(
-                storyName = "Παπουτσομένος Γάτος",
-                counter = 3
-            ),StoryStatisticDto(
-                storyName = "Παπουτσομένος Γάτος",
-                counter = 5
-            ),StoryStatisticDto(
-                storyName = "Παπουτσομένος Γάτος",
-                counter = 7
-            ),StoryStatisticDto(
-                storyName = "Παπουτσομένος Γάτος",
-                counter = 2
-            ),StoryStatisticDto(
-                storyName = "Παπουτσομένος Γάτος",
-                counter = 1
-            )
-        )
+        Authenticator.getActiveUser()?.uid?.let { userId ->
+            val snapshot = dbRef.child(USERS_DB_PATH).child(userId).get().await()
+            val list = snapshot.children
+                .map { it.getValue(StoryStatisticDto::class.java) }
+                .sortedByDescending { it?.counter }
 
-        val mappedList = StoryStatisticMapper.fromDataToDomainModel(statistics)
-        emit(mappedList)
+            val mappedList = StoryStatisticMapper.fromDataToDomainModel(list)
+            emit(mappedList)
+        } ?: kotlin.run {
+            emit(listOf())
+        }
     }
 }
