@@ -9,3 +9,4 @@ package com.stathis.unipiaudiostories.util
  */
 fun String?.toNotNull(): String = this ?: ""
 fun Int?.toNotNull(): Int = this ?: 0
+fun Long?.toNotNull(): Long = this ?: 0L

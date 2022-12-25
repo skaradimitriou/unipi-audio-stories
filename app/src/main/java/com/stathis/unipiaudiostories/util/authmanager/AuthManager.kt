@@ -1,5 +1,6 @@
 package com.stathis.unipiaudiostories.util.authmanager
 
+import com.google.firebase.auth.FirebaseUser
 import com.stathis.unipiaudiostories.models.domain.Result
 
 /**
@@ -25,4 +26,10 @@ interface AuthManager {
      */
 
     fun isUserActive(): Boolean
+
+    /**
+     * Returns the current user that is logged in.
+     */
+
+    fun getActiveUser() : FirebaseUser?
 }

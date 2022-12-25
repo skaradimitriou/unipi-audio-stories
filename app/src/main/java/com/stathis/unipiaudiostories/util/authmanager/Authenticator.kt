@@ -2,6 +2,7 @@ package com.stathis.unipiaudiostories.util.authmanager
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseUser
 import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.util.GENERIC_ERROR
 import kotlinx.coroutines.tasks.await
@@ -50,4 +51,6 @@ object Authenticator : AuthManager {
     }
 
     override fun isUserActive(): Boolean = auth.currentUser != null
+
+    override fun getActiveUser(): FirebaseUser? = auth.currentUser
 }

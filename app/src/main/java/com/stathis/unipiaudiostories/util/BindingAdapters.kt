@@ -32,3 +32,8 @@ fun ImageView.setStoryButton(isPlaying: Boolean) {
         setImageResource(R.drawable.ic_play)
     }
 }
+
+@BindingAdapter("setStatisticNumber")
+fun TextView.setStatisticNumber(counter: Long) {
+    text = counter.toString()
+}

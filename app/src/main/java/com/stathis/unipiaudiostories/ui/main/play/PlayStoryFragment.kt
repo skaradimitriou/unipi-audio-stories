@@ -1,7 +1,5 @@
 package com.stathis.unipiaudiostories.ui.main.play
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.stathis.unipiaudiostories.R
@@ -9,8 +7,6 @@ import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentPlayStoryBinding
 import com.stathis.unipiaudiostories.tts.TextToSpeechUtil
 import com.stathis.unipiaudiostories.util.setScreenTitle
-import timber.log.Timber
-import java.time.LocalTime
 
 class PlayStoryFragment : BaseFragment<FragmentPlayStoryBinding>(R.layout.fragment_play_story) {
 
@@ -20,7 +16,7 @@ class PlayStoryFragment : BaseFragment<FragmentPlayStoryBinding>(R.layout.fragme
     private val tts = TextToSpeechUtil()
 
     override fun init() {
-        setScreenTitle("Εκφώνηση Ιστορίας")
+        setScreenTitle(getString(R.string.play_story_title))
         binding.model = safeArgs.story
         binding.viewModel = viewModel
         tts.initialize(requireContext())

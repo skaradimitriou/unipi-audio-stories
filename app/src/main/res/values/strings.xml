@@ -27,9 +27,9 @@
 
 
     <!-- Play Story Screen -->
-
+    <string name="play_story_title">Εκφώνηση Ιστορίας</string>
 
     <!-- Statistics Screen -->
-
+    <string name="statistics_title">Τα Στατιστικά μου</string>
 
 </resources>
