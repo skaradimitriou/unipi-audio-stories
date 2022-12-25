@@ -11,17 +11,17 @@
     <string name="menu_statistics">Στατιστικά</string>
 
     <!-- Login Screen -->
-
-
-    <!-- Register Screen -->
-
-
-    <!-- Main Dashboard Screen -->
-    <string name="stories_title">Παιδικές Ιστορίες</string>
     <string name="email_hint">E-mail</string>
     <string name="password_hint">Κωδικός Πρόσβασης</string>
     <string name="login_btn_text">Σύνδεση</string>
     <string name="register_btn_text">Δεν έχεις λογαριασμό; Εγγραφή</string>
+
+    <!-- Register Screen -->
+    <string name="confirm_pass_hint">Επιβεβαίωση Κωδικού Πρόσβασης</string>
+    <string name="register_btn">Εγγραφή</string>
+
+    <!-- Main Dashboard Screen -->
+    <string name="stories_title">Παιδικές Ιστορίες</string>
 
     <!-- Story Details Screen -->
 
