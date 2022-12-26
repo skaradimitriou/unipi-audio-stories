@@ -5,15 +5,19 @@ import androidx.navigation.fragment.navArgs
 import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentPlayStoryBinding
-import com.stathis.unipiaudiostories.tts.TextToSpeechUtil
+import com.stathis.unipiaudiostories.tts.MyTTsFeatures
 import com.stathis.unipiaudiostories.util.setScreenTitle
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlayStoryFragment : BaseFragment<FragmentPlayStoryBinding>(R.layout.fragment_play_story) {
 
     private val viewModel: PlayStoryViewModel by viewModels()
     private val safeArgs: PlayStoryFragmentArgs by navArgs()
 
-    private val tts = TextToSpeechUtil()
+    @Inject
+    lateinit var tts: MyTTsFeatures
 
     override fun init() {
         setScreenTitle(getString(R.string.play_story_title))
