@@ -12,7 +12,7 @@
 
     <!-- Login Screen -->
     <string name="email_hint">E-mail</string>
-    <string name="password_hint">Password</string>
+    <string name="password_hint">Κωδικός Πρόσβαση</string>
     <string name="login_btn_text">Σύνδεση</string>
     <string name="register_btn_text">Δεν έχεις λογαριασμό; Εγγραφή</string>
 

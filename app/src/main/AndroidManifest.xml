@@ -17,6 +17,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.intro.IntroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.start.StartingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

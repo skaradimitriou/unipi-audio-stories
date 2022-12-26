@@ -7,7 +7,7 @@
         android:id="@+id/register_screen_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_bg"
+        android:background="@color/sand_bg"
         android:padding="@dimen/dimen_m"
         tools:context=".features.register.RegisterActivity">
 

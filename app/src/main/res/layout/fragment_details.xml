@@ -14,7 +14,7 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_bg"
+        android:background="@color/sand_bg"
         app:layoutDescription="@xml/fragment_details_xml_constraintlayout2_scene"
         tools:context=".ui.main.details.DetailsFragment">
 
