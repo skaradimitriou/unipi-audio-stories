@@ -4,6 +4,10 @@ import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.models.domain.StoryStatistic
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * The [StoryRepository] contains all the methods to get Stories and Statistics.
+ */
+
 interface StoryRepository {
 
     /**

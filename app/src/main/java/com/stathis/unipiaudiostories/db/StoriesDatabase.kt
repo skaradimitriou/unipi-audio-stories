@@ -24,12 +24,14 @@ abstract class StoriesDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     StoriesDatabase::class.java,
-                    "stories_db"
+                    DB_NAME
                 ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 // return instance
                 instance
             }
         }
+
+        private const val DB_NAME = "stories_db"
     }
 }

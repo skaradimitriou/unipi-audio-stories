@@ -4,6 +4,11 @@ import com.stathis.unipiaudiostories.models.data.StoryStatisticDto
 import com.stathis.unipiaudiostories.models.domain.StoryStatistic
 import com.stathis.unipiaudiostories.util.toNotNull
 
+/**
+ * [StoryStatisticMapper] is responsible to map the List<[StoryStatisticDto]> into
+ * a List<[StoryStatistic]> so that it can be used later on to the app's view layer.
+ */
+
 object StoryStatisticMapper : Mapper<List<StoryStatisticDto?>?, List<StoryStatistic>> {
 
     override fun fromDataToDomainModel(dataModel: List<StoryStatisticDto?>?): List<StoryStatistic> {

@@ -4,6 +4,11 @@ import com.stathis.unipiaudiostories.models.data.StoryDto
 import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.util.toNotNull
 
+/**
+ * [StoryMapper] is responsible to map the List<[StoryDto]> into a List<[Story]>
+ * so that it can be used later on to the app's view layer.
+ */
+
 object StoryMapper : Mapper<List<StoryDto?>?, List<Story>> {
 
     override fun fromDataToDomainModel(dataModel: List<StoryDto?>?): List<Story> {

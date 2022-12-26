@@ -17,6 +17,10 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
+/**
+ * Implementation class of [StoryRepository]'s methods.
+ */
+
 class StoryRepositoryImpl(context: Context) : StoryRepository {
 
     private val dbRef = FirebaseDatabase.getInstance().reference
