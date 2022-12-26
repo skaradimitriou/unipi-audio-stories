@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Unipi Audio Stories</string>
+
+    <!-- General -->
+    <string name="lorem_ipsum">Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. </string>
+
+    <!-- BottomSheet Menu -->
+    <string name="menu_stories">Geschichten</string>
+    <string name="menu_statistics">Statistiken</string>
+
+    <!-- Login Screen -->
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Passwort</string>
+    <string name="login_btn_text">Anmeldung</string>
+    <string name="register_btn_text">Sie haben noch kein Konto? Registrieren</string>
+
+    <!-- Register Screen -->
+    <string name="confirm_pass_hint">Kennwort bestätigen</string>
+    <string name="register_btn">Registrieren</string>
+
+    <!-- Main Dashboard Screen -->
+    <string name="stories_title">Geschichten</string>
+
+    <!-- Story Details Screen -->
+
+
+    <!-- Play Story Screen -->
+    <string name="play_story_title">Geschichte spielen</string>
+
+    <!-- Statistics Screen -->
+    <string name="statistics_title">Meine Statistik</string>
+</resources>
