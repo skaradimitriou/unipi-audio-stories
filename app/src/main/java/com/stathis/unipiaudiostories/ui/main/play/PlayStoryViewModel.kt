@@ -12,8 +12,6 @@ class PlayStoryViewModel(app: Application) : BaseViewModel(app) {
 
     private val _buttonState = MutableLiveData<Boolean>()
 
-    val test = MutableLiveData<Int>()
-
     private var isPlaying = false
 
     fun playButtonClicked() {

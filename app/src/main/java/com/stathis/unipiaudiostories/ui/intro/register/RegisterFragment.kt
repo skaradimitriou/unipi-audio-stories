@@ -8,8 +8,9 @@ import com.stathis.unipiaudiostories.databinding.FragmentRegisterBinding
 import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.ui.main.MainActivity
 import com.stathis.unipiaudiostories.util.showSnackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment_register) {
 
     private val viewModel: RegisterViewModel by viewModels()

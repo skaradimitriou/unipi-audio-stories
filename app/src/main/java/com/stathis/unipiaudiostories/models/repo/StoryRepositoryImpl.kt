@@ -23,7 +23,8 @@ import javax.inject.Inject
 
 class StoryRepositoryImpl @Inject constructor(
     private val dbRef: DatabaseReference,
-    private val localDb: StoriesDao
+    private val localDb: StoriesDao,
+    private val authenticator: Authenticator
 ) : StoryRepository {
 
     override suspend fun getAllStories(): Flow<List<Story>> = flow {
@@ -44,7 +45,7 @@ class StoryRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getStoryStatistics(): Flow<List<StoryStatistic>> = flow {
-        Authenticator.getActiveUser()?.uid?.let { userId ->
+        authenticator.getActiveUser()?.uid?.let { userId ->
             val snapshot = dbRef.child(USERS_DB_PATH).child(userId).get().await()
             val list = snapshot.children
                 .map { it.getValue(StoryStatisticDto::class.java) }

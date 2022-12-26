@@ -6,15 +6,18 @@ import com.google.firebase.auth.FirebaseUser
 import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.util.GENERIC_ERROR
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
 /**
  * [Authenticator] singleton class is responsible for all the transactions between the app
  * and [FirebaseAuth].
  */
 
-object Authenticator : AuthManager {
+class Authenticator @Inject constructor(
+    private val auth : FirebaseAuth
+) : AuthManager {
 
-    private val auth = FirebaseAuth.getInstance()
+//    private val auth = FirebaseAuth.getInstance()
 
     /**
      * Attempts to register a user (email, pass) async and returns the result.

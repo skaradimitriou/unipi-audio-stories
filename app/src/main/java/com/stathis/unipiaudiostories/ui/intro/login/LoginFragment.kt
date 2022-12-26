@@ -9,8 +9,9 @@ import com.stathis.unipiaudiostories.databinding.FragmentLoginBinding
 import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.ui.main.MainActivity
 import com.stathis.unipiaudiostories.util.showSnackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
     private val viewModel: LoginViewModel by viewModels()

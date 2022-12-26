@@ -8,7 +8,9 @@ import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseActivity
 import com.stathis.unipiaudiostories.databinding.ActivityIntroBinding
 import com.stathis.unipiaudiostories.ui.main.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IntroActivity : BaseActivity<ActivityIntroBinding>(R.layout.activity_intro) {
 
     private val viewModel: IntroViewModel by viewModels()

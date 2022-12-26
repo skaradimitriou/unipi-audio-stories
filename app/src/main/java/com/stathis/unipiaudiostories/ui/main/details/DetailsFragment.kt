@@ -7,8 +7,9 @@ import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentDetailsBinding
 import com.stathis.unipiaudiostories.util.setScreenTitle
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_details) {
 
     private val viewModel: DetailsViewModel by viewModels()
