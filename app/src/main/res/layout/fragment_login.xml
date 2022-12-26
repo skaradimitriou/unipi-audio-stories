@@ -16,8 +16,8 @@
             android:layout_width="@dimen/dimen_70"
             android:layout_height="@dimen/dimen_70"
             android:layout_marginTop="@dimen/dimen_xl"
+            android:background="@mipmap/audio_book_logo"
             android:contentDescription="@null"
-            android:background="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

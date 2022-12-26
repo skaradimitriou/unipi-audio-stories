@@ -13,9 +13,12 @@ import com.stathis.unipiaudiostories.R
 @BindingAdapter("imageFromUrl")
 fun ImageView.setImageFromUrl(url: String?) {
     try {
-        Glide.with(this).load(url).error(R.mipmap.ic_launcher).into(this)
+        Glide.with(this).load(url)
+            .placeholder(R.mipmap.audio_book_logo)
+            .error(R.mipmap.audio_book_logo)
+            .into(this)
     } catch (e: Exception) {
-        setImageResource(R.mipmap.ic_launcher)
+        setImageResource(R.mipmap.audio_book_logo)
     }
 }
 
