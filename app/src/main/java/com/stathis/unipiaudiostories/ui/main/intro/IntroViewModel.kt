@@ -7,12 +7,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.domain.Story
-import com.stathis.unipiaudiostories.models.repo.StoryRepositoryImpl
+import com.stathis.unipiaudiostories.models.repo.StoryRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class IntroViewModel(app: Application) : BaseViewModel(app), StoryCallback {
+@HiltViewModel
+class IntroViewModel @Inject constructor(
+    private val repo: StoryRepository,
+    app: Application
+) : BaseViewModel(app), StoryCallback {
 
-    private val _repo = StoryRepositoryImpl(app)
     val adapter = StoriesAdapter(this)
 
     val stories: LiveData<List<Story>>
@@ -24,7 +29,7 @@ class IntroViewModel(app: Application) : BaseViewModel(app), StoryCallback {
 
     fun getStories() {
         viewModelScope.launch {
-            _repo.getAllStories().collect {
+            repo.getAllStories().collect {
                 _stories.postValue(it)
             }
         }

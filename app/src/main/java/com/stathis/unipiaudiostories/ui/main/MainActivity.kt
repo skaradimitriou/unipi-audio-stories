@@ -8,7 +8,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseActivity
 import com.stathis.unipiaudiostories.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val viewModel: MainViewModel by viewModels()

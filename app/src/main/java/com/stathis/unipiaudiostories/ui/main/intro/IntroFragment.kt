@@ -8,7 +8,9 @@ import com.stathis.unipiaudiostories.databinding.FragmentIntroBinding
 import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.util.setScreenTitle
 import com.stathis.unipiaudiostories.util.setVerticalRecycler
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IntroFragment : BaseFragment<FragmentIntroBinding>(R.layout.fragment_intro) {
 
     private val viewModel: IntroViewModel by viewModels()

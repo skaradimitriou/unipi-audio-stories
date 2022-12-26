@@ -5,7 +5,9 @@ import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentStatisticsBinding
 import com.stathis.unipiaudiostories.util.setVerticalRecycler
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>(R.layout.fragment_statistics) {
 
     private val viewModel: StatisticsViewModel by viewModels()
