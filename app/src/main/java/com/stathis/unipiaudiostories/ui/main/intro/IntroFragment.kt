@@ -28,6 +28,14 @@ class IntroFragment : BaseFragment<FragmentIntroBinding>(R.layout.fragment_intro
     override fun startOps() {
         viewModel.getStories()
 
+        binding.swipeToRefresh.setOnRefreshListener {
+            viewModel.getStories()
+        }
+
+        viewModel.stories.observe(viewLifecycleOwner) {
+            binding.swipeToRefresh.isRefreshing = false
+        }
+
         viewModel.observe(this) { selectedStory ->
             goToDetails(story = selectedStory)
         }

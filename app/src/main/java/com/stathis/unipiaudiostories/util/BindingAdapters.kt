@@ -21,7 +21,7 @@ fun ImageView.setImageFromUrl(url: String?) {
 
 @BindingAdapter("author", "year")
 fun TextView.setStoryAdditionals(author: String?, year: Int?) {
-    text = "$author | $year"
+    text = resources.getString(R.string.story_author_year, author, year.toString())
 }
 
 @BindingAdapter("setStoryButton")

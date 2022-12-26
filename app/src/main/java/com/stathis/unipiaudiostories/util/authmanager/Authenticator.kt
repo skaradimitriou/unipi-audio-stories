@@ -14,10 +14,8 @@ import javax.inject.Inject
  */
 
 class Authenticator @Inject constructor(
-    private val auth : FirebaseAuth
+    private val auth: FirebaseAuth
 ) : AuthManager {
-
-//    private val auth = FirebaseAuth.getInstance()
 
     /**
      * Attempts to register a user (email, pass) async and returns the result.

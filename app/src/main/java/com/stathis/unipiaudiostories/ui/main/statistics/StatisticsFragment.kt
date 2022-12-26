@@ -23,7 +23,15 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>(R.layout.frag
 
     override fun startOps() {
         viewModel.getStatistics()
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            viewModel.getStatistics()
+        }
+
         viewModel.observe(viewLifecycleOwner)
+        viewModel.statistic.observe(viewLifecycleOwner) {
+            binding.swipeToRefresh.isRefreshing = false
+        }
     }
 
     override fun stopOps() {}

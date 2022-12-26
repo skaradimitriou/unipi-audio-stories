@@ -21,7 +21,7 @@ class StatisticsViewModel @Inject constructor(
 
     val adapter = StatisticsAdapter()
 
-    private val statistic: LiveData<List<StoryStatistic>>
+    val statistic: LiveData<List<StoryStatistic>>
         get() = _statistics
 
     private val _statistics = MutableLiveData<List<StoryStatistic>>()
