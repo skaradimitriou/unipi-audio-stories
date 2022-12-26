@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Text Dimensions -->
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_22">22sp</dimen>
+
     <!-- App General Dimensions -->
+    <dimen name="button_height">56dp</dimen>
 
     <dimen name="dimen_xs">4dp</dimen>
     <dimen name="dimen_s">8dp</dimen>
@@ -14,6 +21,7 @@
     <dimen name="dimen_100">100dp</dimen>
     <dimen name="dimen_200">200dp</dimen>
     <dimen name="dimen_70">70dp</dimen>
-    <dimen name="button_height">56dp</dimen>
+    <dimen name="image_80">80dp</dimen>
+
 
 </resources>

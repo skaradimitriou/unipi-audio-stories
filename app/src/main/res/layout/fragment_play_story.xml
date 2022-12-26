@@ -23,13 +23,10 @@
 
         <TextView
             android:id="@+id/songTitleTxtView"
+            style="@style/text_22_bold_white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:text="@{model.title}"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,12 +34,9 @@
 
         <TextView
             android:id="@+id/songBandTxtView"
+            style="@style/text_18_normal_70_white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0.7"
-            android:gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="18sp"
             app:author="@{model.author}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +58,7 @@
                 android:id="@+id/songImgView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@null"
                 android:scaleType="centerCrop"
                 app:imageFromUrl="@{model.image}" />
 
@@ -82,7 +77,8 @@
                 android:layout_width="@dimen/dimen_70"
                 android:layout_height="@dimen/dimen_70"
                 android:background="@drawable/ic_circle"
-                android:backgroundTint="@color/design_default_color_primary"
+                android:backgroundTint="@color/light_blue"
+                android:contentDescription="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +88,9 @@
                 android:id="@+id/playButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:padding="@dimen/dimen_m"
+                android:contentDescription="@null"
                 android:onClick="@{() -> viewModel.playButtonClicked()}"
+                android:padding="@dimen/dimen_m"
                 android:src="@drawable/ic_play"
                 app:layout_constraintBottom_toBottomOf="@id/circleImgView"
                 app:layout_constraintEnd_toEndOf="@id/circleImgView"

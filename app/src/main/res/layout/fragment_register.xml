@@ -17,15 +17,14 @@
             android:layout_height="@dimen/dimen_70"
             android:layout_marginTop="@dimen/dimen_xl"
             android:background="@mipmap/ic_launcher"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/register_app_name"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            style="@style/text_20_bold_dark_grey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_m"
@@ -90,12 +89,11 @@
 
         <Button
             android:id="@+id/register_btn"
+            style="@style/AppButton"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginBottom="@dimen/dimen_l"
-            android:backgroundTint="#0000FF"
             android:text="@string/register_btn"
-            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

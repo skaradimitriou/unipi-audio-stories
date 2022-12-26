@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adapter="@{viewModel.adapter}"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/dimen_xl"
+            style="@style/AppRecycler"
             tools:itemCount="5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@
             android:id="@+id/storyImgView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_200"
+            android:contentDescription="@null"
             android:scaleType="centerCrop"
             app:imageFromUrl="@{model.image}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,11 +32,9 @@
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollView"
+            style="@style/MyNestedScroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingBottom="@dimen/dimen_100"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/storyImgView">
 
@@ -46,13 +45,10 @@
 
                 <TextView
                     android:id="@+id/storyTitleTxtView"
+                    style="@style/text_18_bold_center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/dimen_s"
                     android:text="@{model.title}"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -86,12 +82,13 @@
             android:id="@+id/playStoryBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_play"
-            android:backgroundTint="@color/design_default_color_primary"
-            app:tint="@null"
             android:layout_margin="@dimen/dimen_l"
+            android:backgroundTint="@color/design_default_color_primary"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_play"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@null" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

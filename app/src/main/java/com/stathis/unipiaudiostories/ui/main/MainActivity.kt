@@ -5,7 +5,6 @@ import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseActivity
 import com.stathis.unipiaudiostories.databinding.ActivityMainBinding
@@ -21,13 +20,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     override fun startOps() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
+        navController.addOnDestinationChangedListener { controller, destination, _ ->
             if (destination.id == R.id.nav_home || destination.id == R.id.nav_statistics) {
                 //disable action bar back button
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             } else {
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
             }
+        }
+
+        binding.bottomNavigationMenu.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    navController.popBackStack(R.id.nav_home, false)
+                    return@setOnItemSelectedListener false
+                }
+                R.id.nav_statistics -> {
+                    navController.navigate(R.id.nav_statistics)
+                    return@setOnItemSelectedListener false
+                }
+            }
+            false
         }
     }
 
