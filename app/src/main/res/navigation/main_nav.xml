@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.stathis.unipiaudiostories.ui.main.intro.IntroFragment"
-        android:label="IntroFragment" >
+        android:label="IntroFragment">
         <action
             android:id="@+id/goToDetails"
             app:destination="@id/nav_details" />
@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/nav_play_story"
         android:name="com.stathis.unipiaudiostories.ui.main.play.PlayStoryFragment"
-        android:label="PlayStoryFragment" >
+        android:label="PlayStoryFragment">
         <argument
             android:name="story"
             app:argType="com.stathis.unipiaudiostories.models.domain.Story" />
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/nav_details"
         android:name="com.stathis.unipiaudiostories.ui.main.details.DetailsFragment"
-        android:label="DetailsFragment" >
+        android:label="DetailsFragment">
         <argument
             android:name="story"
             app:argType="com.stathis.unipiaudiostories.models.domain.Story" />
@@ -35,4 +35,8 @@
         android:id="@+id/nav_statistics"
         android:name="com.stathis.unipiaudiostories.ui.main.statistics.StatisticsFragment"
         android:label="StatisticsFragment" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.stathis.unipiaudiostories.ui.main.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

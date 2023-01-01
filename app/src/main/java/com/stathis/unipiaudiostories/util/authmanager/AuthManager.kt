@@ -32,4 +32,10 @@ interface AuthManager {
      */
 
     fun getActiveUser() : FirebaseUser?
+
+    /**
+     * Logout feature
+     */
+
+    fun logout()
 }

@@ -54,4 +54,8 @@ class Authenticator @Inject constructor(
     override fun isUserActive(): Boolean = auth.currentUser != null
 
     override fun getActiveUser(): FirebaseUser? = auth.currentUser
+
+    override fun logout() {
+        auth.signOut()
+    }
 }

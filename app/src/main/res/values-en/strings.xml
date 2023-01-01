@@ -8,6 +8,7 @@
     <!-- BottomSheet Menu -->
     <string name="menu_stories">Stories</string>
     <string name="menu_statistics">Statistics</string>
+    <string name="menu_profile">Profile</string>
 
     <!-- Login Screen -->
     <string name="email_hint">E-mail</string>
@@ -30,4 +31,9 @@
 
     <!-- Statistics Screen -->
     <string name="statistics_title">My statistics</string>
+
+    <!-- Profile Screen -->
+    <string name="logged_in_as">You are logged in as:</string>
+    <string name="logout">Logout</string>
+
 </resources>

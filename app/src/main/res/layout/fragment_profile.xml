@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.stathis.unipiaudiostories.ui.main.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sand_bg"
+        android:padding="@dimen/dimen_m"
+        tools:context=".ui.main.profile.ProfileFragment">
+
+        <ImageView
+            android:id="@+id/userImgView"
+            android:layout_width="@dimen/dimen_100"
+            android:layout_height="@dimen/dimen_100"
+            android:layout_marginTop="@dimen/dimen_l"
+            android:scaleType="centerCrop"
+            android:src="@drawable/empty_profile_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/loggedInAsTxtView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_m"
+            android:gravity="center_horizontal"
+            android:text="@string/logged_in_as"
+            android:textSize="@dimen/text_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userImgView" />
+
+        <TextView
+            android:id="@+id/usersEmailTxtView"
+            style="@style/text_18_bold_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@{viewModel.userEmail}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loggedInAsTxtView"
+            tools:text="test@testopoulos.com" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            style="@style/AppButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:onClick="@{() -> viewModel.logoutUser()}"
+            android:text="@string/logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

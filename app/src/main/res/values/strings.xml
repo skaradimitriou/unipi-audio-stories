@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Unipi Audio Stories</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- General -->
     <string name="lorem_ipsum">Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. Lorem ipsum sit dolor amet. </string>
@@ -9,6 +7,7 @@
     <!-- BottomSheet Menu -->
     <string name="menu_stories">Ιστορίες</string>
     <string name="menu_statistics">Στατιστικά</string>
+    <string name="menu_profile">Προφίλ</string>
 
     <!-- Login Screen -->
     <string name="email_hint">E-mail</string>
@@ -32,5 +31,9 @@
 
     <!-- Statistics Screen -->
     <string name="statistics_title">Τα Στατιστικά μου</string>
+
+    <!-- Profile Screen -->
+    <string name="logged_in_as">Έχετε συνδεθεί ώς:</string>
+    <string name="logout">Αποσύνδεση</string>
 
 </resources>
