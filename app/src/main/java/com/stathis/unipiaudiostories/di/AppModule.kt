@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.stathis.unipiaudiostories.db.StoriesDao
 import com.stathis.unipiaudiostories.db.StoriesDatabase
+import com.stathis.unipiaudiostories.db.StoryStatisticsDao
 import com.stathis.unipiaudiostories.models.repo.StoryRepository
 import com.stathis.unipiaudiostories.models.repo.StoryRepositoryImpl
 import com.stathis.unipiaudiostories.tts.MyTTsFeatures
@@ -25,10 +26,11 @@ object AppModule {
     @Singleton
     fun provideStoriesRepository(
         onlineDb: DatabaseReference,
-        localDb: StoriesDao,
+        storiesDao: StoriesDao,
+        statisticsDao: StoryStatisticsDao,
         authenticator: Authenticator
     ): StoryRepository {
-        return StoryRepositoryImpl(onlineDb, localDb, authenticator)
+        return StoryRepositoryImpl(onlineDb, storiesDao, statisticsDao, authenticator)
     }
 
     @Provides
@@ -39,8 +41,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocalDbReference(app: Application): StoriesDao {
+    fun provideStoriesDbReference(app: Application): StoriesDao {
         return StoriesDatabase.getDatabase(app).countriesDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideStatisticsDbReference(app: Application): StoryStatisticsDao {
+        return StoriesDatabase.getDatabase(app).statisticsDao()
     }
 
     @Provides

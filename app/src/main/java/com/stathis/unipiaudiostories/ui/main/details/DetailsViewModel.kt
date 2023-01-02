@@ -38,7 +38,7 @@ class DetailsViewModel @Inject constructor(
                 // update list in realtime db
                 dbRef.child(USERS_DB_PATH).child(uuid).setValue(mutableList).await()
             } else {
-                val newList = mappedList.plus(StoryStatistic(storyName, 1))
+                val newList = mappedList.plus(StoryStatistic(null, storyName, 1))
                 dbRef.child(USERS_DB_PATH).child(uuid).setValue(newList).await()
             }
         }

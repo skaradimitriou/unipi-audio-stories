@@ -2,6 +2,7 @@ package com.stathis.unipiaudiostories.models.repo
 
 import com.google.firebase.database.DatabaseReference
 import com.stathis.unipiaudiostories.db.StoriesDao
+import com.stathis.unipiaudiostories.db.StoryStatisticsDao
 import com.stathis.unipiaudiostories.models.data.StoryDto
 import com.stathis.unipiaudiostories.models.data.StoryStatisticDto
 import com.stathis.unipiaudiostories.models.domain.Story
@@ -23,33 +24,40 @@ import javax.inject.Inject
 
 class StoryRepositoryImpl @Inject constructor(
     private val dbRef: DatabaseReference,
-    private val localDb: StoriesDao,
+    private val storiesDb: StoriesDao,
+    private val statisticsDb: StoryStatisticsDao,
     private val authenticator: Authenticator
 ) : StoryRepository {
 
     /**
-     * The app caches the List<Story> inside the Local db before it returns the data to the
-     * ViewModel.
+     * The app caches the List<Story> inside the Local db before it sends the data
+     * to the ViewModel.
      */
 
     override suspend fun getAllStories(): Flow<List<Story>> = flow {
-        val cachedList = localDb.getAllCountries()
+        val cachedList = storiesDb.getAllCountries()
         val dbSnapshot = dbRef.child(STORIES_DB_PATH).get().await()
         val list = dbSnapshot.children.map { it.getValue(StoryDto::class.java) }
         val mappedList = StoryMapper.fromDataToDomainModel(list)
 
-        if (!list.isNullOrEmpty()) {
-            localDb.deleteAll()
-            localDb.insertStories(mappedList)
-            val newCachedList = localDb.getAllCountries()
+        if (!mappedList.isNullOrEmpty()) {
+            storiesDb.deleteAll()
+            storiesDb.insertStories(mappedList)
+            val newCachedList = storiesDb.getAllCountries()
             emitAll(newCachedList)
         } else {
             emitAll(cachedList)
         }
     }
 
+    /**
+     * The app caches the List<StoryStatistic> inside the Local db before it sends the data
+     * to the ViewModel.
+     */
+
     override suspend fun getStoryStatistics(): Flow<List<StoryStatistic>> = flow {
         authenticator.getActiveUser()?.uid?.let { userId ->
+            val cachedList = statisticsDb.getAllStatistics()
             val snapshot = dbRef.child(USERS_DB_PATH).child(userId).get().await()
             val list = snapshot.children
                 .map { it.getValue(StoryStatisticDto::class.java) }
@@ -57,7 +65,14 @@ class StoryRepositoryImpl @Inject constructor(
 
             val mappedList = StoryStatisticMapper.fromDataToDomainModel(list)
 
-            emit(mappedList)
+            if (!mappedList.isNullOrEmpty()) {
+                statisticsDb.deleteAll()
+                statisticsDb.insertStatistics(mappedList)
+                val newCachedList = statisticsDb.getAllStatistics()
+                emitAll(newCachedList)
+            } else {
+                emitAll(cachedList)
+            }
         } ?: kotlin.run {
             emit(listOf())
         }
