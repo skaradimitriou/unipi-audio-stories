@@ -4,6 +4,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="androidx.lifecycle.LiveData" />
+
         <variable
             name="viewModel"
             type="com.stathis.unipiaudiostories.ui.main.intro.IntroViewModel" />
@@ -28,7 +32,11 @@
                 android:adapter="@{viewModel.adapter}"
                 tools:itemCount="5" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/noResultsLayout"
+                layout="@layout/no_results_layout"
+                tools:visibility="gone" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

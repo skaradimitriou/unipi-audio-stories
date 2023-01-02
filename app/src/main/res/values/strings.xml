@@ -35,5 +35,6 @@
     <!-- Profile Screen -->
     <string name="logged_in_as">Έχετε συνδεθεί ώς:</string>
     <string name="logout">Αποσύνδεση</string>
+    <string name="no_results_text">Δεν βρέθηκαν αποτελέσματα</string>
 
 </resources>

@@ -28,6 +28,11 @@
                 android:adapter="@{viewModel.adapter}"
                 tools:itemCount="5" />
 
+            <include
+                android:id="@+id/noResultsLayout"
+                layout="@layout/no_results_layout"
+                tools:visibility="gone" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

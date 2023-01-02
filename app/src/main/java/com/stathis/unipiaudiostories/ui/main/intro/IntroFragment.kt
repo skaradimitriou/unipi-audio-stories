@@ -18,6 +18,7 @@ class IntroFragment : BaseFragment<FragmentIntroBinding>(R.layout.fragment_intro
     override fun init() {
         setScreenTitle(getString(R.string.stories_title))
 
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.storiesRecycler.setVerticalRecycler(
             topDimen = R.dimen.dimen_s,
@@ -26,13 +27,14 @@ class IntroFragment : BaseFragment<FragmentIntroBinding>(R.layout.fragment_intro
     }
 
     override fun startOps() {
-        viewModel.getStories()
+        viewModel.getStoriesFromDb()
 
         binding.swipeToRefresh.setOnRefreshListener {
-            viewModel.getStories()
+            viewModel.getStoriesFromDb()
         }
 
-        viewModel.stories.observe(viewLifecycleOwner) {
+        viewModel.stories.observe(viewLifecycleOwner) { list ->
+            binding.noResultsLayout.showEmptyResult = list.isEmpty()
             binding.swipeToRefresh.isRefreshing = false
         }
 
@@ -42,10 +44,6 @@ class IntroFragment : BaseFragment<FragmentIntroBinding>(R.layout.fragment_intro
     }
 
     override fun stopOps() {}
-
-    /*
-     *
-     */
 
     private fun goToDetails(story: Story) {
         val action = IntroFragmentDirections.goToDetails(story)

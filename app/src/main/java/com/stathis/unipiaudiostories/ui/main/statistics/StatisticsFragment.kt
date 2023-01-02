@@ -29,7 +29,8 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>(R.layout.frag
         }
 
         viewModel.observe(viewLifecycleOwner)
-        viewModel.statistic.observe(viewLifecycleOwner) {
+        viewModel.statistic.observe(viewLifecycleOwner) { list ->
+            binding.noResultsLayout.showEmptyResult = list.isEmpty()
             binding.swipeToRefresh.isRefreshing = false
         }
     }

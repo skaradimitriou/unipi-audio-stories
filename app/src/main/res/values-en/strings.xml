@@ -35,5 +35,6 @@
     <!-- Profile Screen -->
     <string name="logged_in_as">You are logged in as:</string>
     <string name="logout">Logout</string>
+    <string name="no_results_text">No results found</string>
 
 </resources>

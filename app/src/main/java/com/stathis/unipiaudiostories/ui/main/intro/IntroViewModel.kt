@@ -27,7 +27,7 @@ class IntroViewModel @Inject constructor(
 
     private lateinit var callback: StoryCallback
 
-    fun getStories() {
+    fun getStoriesFromDb() {
         viewModelScope.launch {
             repo.getAllStories().collect {
                 _stories.postValue(it)
