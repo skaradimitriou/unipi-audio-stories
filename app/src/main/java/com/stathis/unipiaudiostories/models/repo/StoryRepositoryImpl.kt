@@ -12,7 +12,7 @@ import com.stathis.unipiaudiostories.util.STORIES_DB_PATH
 import com.stathis.unipiaudiostories.util.USERS_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -27,20 +27,24 @@ class StoryRepositoryImpl @Inject constructor(
     private val authenticator: Authenticator
 ) : StoryRepository {
 
-    override suspend fun getAllStories(): Flow<List<Story>> = flow {
-        val cachedList = localDb.getAllCountries().first()
+    /**
+     * The app caches the List<Story> inside the Local db before it returns the data to the
+     * ViewModel.
+     */
 
-        val snapshot = dbRef.child(STORIES_DB_PATH).get().await()
-        val list = snapshot.children.map { it.getValue(StoryDto::class.java) }
+    override suspend fun getAllStories(): Flow<List<Story>> = flow {
+        val cachedList = localDb.getAllCountries()
+        val dbSnapshot = dbRef.child(STORIES_DB_PATH).get().await()
+        val list = dbSnapshot.children.map { it.getValue(StoryDto::class.java) }
         val mappedList = StoryMapper.fromDataToDomainModel(list)
 
         if (!list.isNullOrEmpty()) {
             localDb.deleteAll()
             localDb.insertStories(mappedList)
-            val newCachedList = localDb.getAllCountries().first()
-            emit(newCachedList)
+            val newCachedList = localDb.getAllCountries()
+            emitAll(newCachedList)
         } else {
-            emit(cachedList)
+            emitAll(cachedList)
         }
     }
 
@@ -52,6 +56,7 @@ class StoryRepositoryImpl @Inject constructor(
                 .sortedByDescending { it?.counter }
 
             val mappedList = StoryStatisticMapper.fromDataToDomainModel(list)
+
             emit(mappedList)
         } ?: kotlin.run {
             emit(listOf())
