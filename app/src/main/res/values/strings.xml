@@ -23,8 +23,8 @@
     <string name="stories_title">Παιδικές Ιστορίες</string>
     <string name="story_author_year" translatable="false">%s | %s</string>
 
-    <!-- Story Details Screen -->
-
+    <!-- Favorites Screen -->
+    <string name="favorites">Αγαπημένα</string>
 
     <!-- Play Story Screen -->
     <string name="play_story_title">Εκφώνηση Ιστορίας</string>

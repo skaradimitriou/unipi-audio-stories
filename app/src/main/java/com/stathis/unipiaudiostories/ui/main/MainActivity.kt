@@ -23,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun startOps() {
         navController.addOnDestinationChangedListener { controller, destination, _ ->
-            if (destination.id == R.id.nav_home || destination.id == R.id.nav_statistics || destination.id == R.id.nav_profile) {
+            if (destination.id == R.id.nav_home || destination.id == R.id.nav_favorites || destination.id == R.id.nav_statistics || destination.id == R.id.nav_profile) {
                 //disable action bar back button
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             } else {
@@ -34,6 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.bottomNavigationMenu.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> navController.popBackStack(R.id.nav_home, false)
+                R.id.nav_favorites -> navController.navigate(R.id.nav_favorites)
                 R.id.nav_statistics -> navController.navigate(R.id.nav_statistics)
                 R.id.nav_profile -> navController.navigate(R.id.nav_profile)
             }

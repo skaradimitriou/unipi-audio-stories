@@ -7,6 +7,11 @@
         android:title="@string/menu_stories" />
 
     <item
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_favorite_white"
+        android:title="@string/favorites" />
+
+    <item
         android:id="@+id/nav_statistics"
         android:icon="@drawable/ic_chart"
         android:title="@string/menu_statistics" />

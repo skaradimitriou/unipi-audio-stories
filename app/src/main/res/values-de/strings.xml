@@ -23,8 +23,8 @@
     <!-- Main Dashboard Screen -->
     <string name="stories_title">Geschichten</string>
 
-    <!-- Story Details Screen -->
-
+    <!-- Favorites Screen -->
+    <string name="favorites">Favoriten</string>
 
     <!-- Play Story Screen -->
     <string name="play_story_title">Geschichte spielen</string>

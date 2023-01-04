@@ -1,7 +1,12 @@
 package com.stathis.unipiaudiostories.ui.main.details
 
-import androidx.lifecycle.*
+import android.app.Application
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
+import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.data.StoryDto
 import com.stathis.unipiaudiostories.models.data.StoryStatisticDto
 import com.stathis.unipiaudiostories.models.domain.Story
@@ -19,9 +24,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
+    app: Application,
     private val authenticator: Authenticator,
     private val dbRef: DatabaseReference
-) : ViewModel(), FavoritesUtil {
+) : BaseViewModel(app), FavoritesUtil {
 
     val isFavorite: LiveData<Boolean>
         get() = _isFavorite
