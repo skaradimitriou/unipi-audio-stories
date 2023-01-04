@@ -17,8 +17,6 @@ class IntroFragment : BaseFragment<FragmentIntroBinding>(R.layout.fragment_intro
 
     override fun init() {
         setScreenTitle(getString(R.string.stories_title))
-
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.storiesRecycler.setVerticalRecycler(
             topDimen = R.dimen.dimen_s,
