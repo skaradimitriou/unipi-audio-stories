@@ -7,12 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
-import com.stathis.unipiaudiostories.models.data.StoryDto
 import com.stathis.unipiaudiostories.models.data.StoryStatisticDto
 import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.models.domain.StoryStatistic
-import com.stathis.unipiaudiostories.models.mapper.StoryMapper
 import com.stathis.unipiaudiostories.models.mapper.StoryStatisticMapper
+import com.stathis.unipiaudiostories.models.repo.StoryRepositoryImpl
 import com.stathis.unipiaudiostories.util.FAVORITES_DB_PATH
 import com.stathis.unipiaudiostories.util.USERS_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
@@ -26,7 +25,8 @@ import javax.inject.Inject
 class DetailsViewModel @Inject constructor(
     app: Application,
     private val authenticator: Authenticator,
-    private val dbRef: DatabaseReference
+    private val dbRef: DatabaseReference,
+    private val repo: StoryRepositoryImpl,
 ) : BaseViewModel(app), FavoritesUtil {
 
     val isFavorite: LiveData<Boolean>
@@ -107,14 +107,12 @@ class DetailsViewModel @Inject constructor(
     }
 
     override fun getUserFavorites() {
-        val uuid = authenticator.getActiveUser()?.uid.toString()
         viewModelScope.launch(Dispatchers.IO) {
-            val snapshot = dbRef.child(FAVORITES_DB_PATH).child(uuid).get().await()
-            val list = snapshot.children.map { it.getValue(StoryDto::class.java) }
-            val mappedList = StoryMapper.fromDataToDomainModel(list)
-            _tempFavoriteList.clear()
-            _tempFavoriteList.addAll(mappedList)
-            _favorites.postValue(_tempFavoriteList)
+            repo.getAllFavorites().collect { list ->
+                _tempFavoriteList.clear()
+                _tempFavoriteList.addAll(list)
+                _favorites.postValue(_tempFavoriteList)
+            }
         }
     }
 }

@@ -9,20 +9,31 @@
             type="com.stathis.unipiaudiostories.ui.main.favorites.FavoritesViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/sand_bg"
-        tools:context=".ui.main.favorites.FavoritesFragment">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/storiesRecycler"
-            style="@style/AppRecycler"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adapter="@{viewModel.adapter}"
-            tools:itemCount="5"
-            tools:listitem="@layout/holder_story_item" />
+            android:background="@color/sand_bg"
+            tools:context=".ui.main.favorites.FavoritesFragment">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/storiesRecycler"
+                style="@style/AppRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adapter="@{viewModel.adapter}"
+                tools:itemCount="5"
+                tools:listitem="@layout/holder_story_item" />
+
+            <include
+                android:id="@+id/noResultsLayout"
+                layout="@layout/no_results_layout"
+                tools:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

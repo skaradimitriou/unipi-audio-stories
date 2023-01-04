@@ -1,5 +1,6 @@
 package com.stathis.unipiaudiostories.models.repo
 
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.stathis.unipiaudiostories.db.StoriesDao
 import com.stathis.unipiaudiostories.db.StoryStatisticsDao
@@ -9,12 +10,15 @@ import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.models.domain.StoryStatistic
 import com.stathis.unipiaudiostories.models.mapper.StoryMapper
 import com.stathis.unipiaudiostories.models.mapper.StoryStatisticMapper
+import com.stathis.unipiaudiostories.util.FAVORITES_DB_PATH
 import com.stathis.unipiaudiostories.util.STORIES_DB_PATH
 import com.stathis.unipiaudiostories.util.USERS_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -48,6 +52,14 @@ class StoryRepositoryImpl @Inject constructor(
         } else {
             emitAll(cachedList)
         }
+    }
+
+    override suspend fun getAllFavorites(): Flow<List<Story>> = flow {
+        val uuid = authenticator.getActiveUser()?.uid.toString()
+        val snapshot = dbRef.child(FAVORITES_DB_PATH).child(uuid).get().await()
+        val list = snapshot.children.map { it.getValue(StoryDto::class.java) }
+        val mappedList = StoryMapper.fromDataToDomainModel(list)
+        emit(mappedList)
     }
 
     /**

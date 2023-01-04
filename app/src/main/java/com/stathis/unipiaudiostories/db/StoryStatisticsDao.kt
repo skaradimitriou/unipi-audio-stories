@@ -13,7 +13,7 @@ interface StoryStatisticsDao {
      * Query that returns all the statistics sorted by count property ASC
      */
 
-    @Query("SELECT * FROM statistics ORDER BY counter ASC")
+    @Query("SELECT * FROM statistics ORDER BY counter DESC")
     fun getAllStatistics(): Flow<List<StoryStatistic>>
 
     /**

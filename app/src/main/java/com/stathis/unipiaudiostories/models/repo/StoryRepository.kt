@@ -16,5 +16,7 @@ interface StoryRepository {
      */
     suspend fun getAllStories() : Flow<List<Story>>
 
+    suspend fun getAllFavorites() : Flow<List<Story>>
+
     suspend fun getStoryStatistics() : Flow<List<StoryStatistic>>
 }

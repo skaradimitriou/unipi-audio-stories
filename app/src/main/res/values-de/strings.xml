@@ -37,4 +37,9 @@
     <string name="logout">Ausloggen</string>
     <string name="no_results_text">Keine ergebnisse gefunden</string>
 
+    <!-- Logout BottomSheet -->
+    <string name="leaving">Are you leaving?</string>
+    <string name="exit">Ausfahrt</string>
+    <string name="not_now">Nicht etzt</string>
+
 </resources>

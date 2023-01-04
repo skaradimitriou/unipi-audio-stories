@@ -1,17 +1,17 @@
 package com.stathis.unipiaudiostories.util
 
+import android.app.Activity
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.core.view.MenuProvider
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import com.stathis.unipiaudiostories.databinding.LogoutBottomsheetBinding
 
 /**
  * Helper method to set the screen title inside a [Fragment] in a more simple way.
@@ -77,4 +77,20 @@ fun Fragment.setMenuProvider(
 
 fun Fragment.getDrawable(drawableId: Int): Drawable? {
     return requireContext().getAppDrawable(drawableId)
+}
+
+fun Activity.showLogoutBottomSheet(onButtonClick: () -> Unit) {
+    val binding = LogoutBottomsheetBinding.inflate(LayoutInflater.from(this))
+    val dialog = BottomSheetDialog(this)
+    dialog.setContentView(binding.root)
+
+    binding.primaryBtn.setOnClickListener {
+        onButtonClick.invoke()
+        dialog.dismiss()
+    }
+
+    binding.secondaryBtn.setOnClickListener {
+        dialog.dismiss()
+    }
+    dialog.show()
 }

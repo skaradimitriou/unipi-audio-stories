@@ -37,4 +37,9 @@
     <string name="logout">Αποσύνδεση</string>
     <string name="no_results_text">Δεν βρέθηκαν αποτελέσματα</string>
 
+    <!-- Logout BottomSheet -->
+    <string name="leaving">Φεύγεις;</string>
+    <string name="exit">Έξοδος</string>
+    <string name="not_now">Όχι τώρα</string>
+
 </resources>

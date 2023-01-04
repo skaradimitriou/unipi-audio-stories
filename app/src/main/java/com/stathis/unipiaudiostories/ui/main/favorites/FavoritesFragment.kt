@@ -25,7 +25,16 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(R.layout.fragme
     }
 
     override fun startOps() {
+        binding.swipeToRefresh.setOnRefreshListener {
+            viewModel.getUserFavorites()
+        }
+
         viewModel.getUserFavorites()
+        viewModel.favorites.observe(viewLifecycleOwner) { list ->
+            binding.noResultsLayout.showEmptyResult = list.isEmpty()
+            binding.swipeToRefresh.isRefreshing = false
+        }
+
         viewModel.observe(viewLifecycleOwner) { selectedStory ->
             goToDetails(selectedStory)
         }
