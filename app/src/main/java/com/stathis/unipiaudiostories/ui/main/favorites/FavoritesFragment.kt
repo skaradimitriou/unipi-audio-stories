@@ -16,7 +16,7 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(R.layout.fragme
     private val viewModel: FavoritesViewModel by viewModels()
 
     override fun init() {
-        setScreenTitle("Τα αγαπημένα μου")
+        setScreenTitle(getString(R.string.favorites))
         binding.viewModel = viewModel
         binding.storiesRecycler.setVerticalRecycler(
             topDimen = R.dimen.dimen_s,
