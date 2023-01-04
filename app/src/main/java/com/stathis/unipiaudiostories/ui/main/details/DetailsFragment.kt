@@ -22,18 +22,17 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
     private lateinit var menu: Menu
 
     override fun init() {
+        binding.viewModel = viewModel
         binding.model = safeArgs.story
         viewModel.currentStory = safeArgs.story
+
+        viewModel.extractTextFromImage(safeArgs.story.image)
 
         setScreenTitle(safeArgs.story.title)
         setMenuProvider(
             menuId = R.menu.story_details_menu,
-            onMenuCreated = {
-                menu = it
-            },
-            onItemSelected = {
-                viewModel.favoriteIconClicked()
-            }
+            onMenuCreated = { menu = it },
+            onItemSelected = { viewModel.favoriteIconClicked() }
         )
     }
 

@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.stathis.unipiaudiostories.ui.main.details.DetailsViewModel" />
+
+        <variable
             name="model"
             type="com.stathis.unipiaudiostories.models.domain.Story" />
     </data>
@@ -67,12 +71,24 @@
                     tools:text="@string/app_name" />
 
                 <TextView
+                    android:id="@+id/storyKeywordsTxtView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingHorizontal="@dimen/dimen_m"
+                    android:text="@{viewModel.keywords}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/storyAdditionalsTxtView"
+                    tools:text="@string/app_name" />
+
+                <TextView
                     android:id="@+id/storyTxtView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:padding="@dimen/dimen_s"
                     android:text="@{model.text}"
-                    app:layout_constraintTop_toBottomOf="@id/storyAdditionalsTxtView"
+                    app:layout_constraintTop_toBottomOf="@id/storyKeywordsTxtView"
                     tools:text="@string/lorem_ipsum" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

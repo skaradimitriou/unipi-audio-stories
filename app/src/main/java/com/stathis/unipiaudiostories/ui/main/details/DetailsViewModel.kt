@@ -5,7 +5,11 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.label.ImageLabeling
+import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.data.StoryStatisticDto
 import com.stathis.unipiaudiostories.models.domain.Story
@@ -21,9 +25,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
+
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    app: Application,
+    private val app: Application,
     private val authenticator: Authenticator,
     private val dbRef: DatabaseReference,
     private val repo: StoryRepositoryImpl,
@@ -34,6 +39,11 @@ class DetailsViewModel @Inject constructor(
 
     private val _isFavorite = MutableLiveData(false)
 
+    val keywords: LiveData<String>
+        get() = _keywords
+
+    private val _keywords = MutableLiveData("")
+
     private val _favorites = MutableLiveData<List<Story>>(listOf())
 
     private var _tempFavoriteList = mutableListOf<Story>()
@@ -43,6 +53,18 @@ class DetailsViewModel @Inject constructor(
 
     init {
         getUserFavorites()
+    }
+
+    fun extractTextFromImage(imageUrl: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val bitmap = Glide.with(app).asBitmap().load(imageUrl).submit().get()
+            val image2 = InputImage.fromBitmap(bitmap, 0)
+            val labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
+            val task = labeler.process(image2).await()
+            val output = task.map { it.text }.toString()
+            _keywords.postValue("Keywords: $output")
+            labeler.close()
+        }
     }
 
     fun observe(owner: LifecycleOwner) {

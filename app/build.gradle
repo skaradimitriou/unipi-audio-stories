@@ -92,6 +92,9 @@ dependencies {
 
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
+    //Firebase ML
+    implementation 'com.google.mlkit:image-labeling:17.0.7'
+
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
