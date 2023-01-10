@@ -11,13 +11,9 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.label.ImageLabeling
 import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
-import com.stathis.unipiaudiostories.models.data.StoryStatisticDto
 import com.stathis.unipiaudiostories.models.domain.Story
-import com.stathis.unipiaudiostories.models.domain.StoryStatistic
-import com.stathis.unipiaudiostories.models.mapper.StoryStatisticMapper
 import com.stathis.unipiaudiostories.models.repo.StoryRepositoryImpl
 import com.stathis.unipiaudiostories.util.FAVORITES_DB_PATH
-import com.stathis.unipiaudiostories.util.USERS_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -80,30 +76,6 @@ class DetailsViewModel @Inject constructor(
             deleteFromFavorites()
         } else {
             addToFavorites()
-        }
-    }
-
-    fun incrementCounterOnDb(storyName: String) {
-        val uuid = authenticator.getActiveUser()?.uid.toString()
-        viewModelScope.launch(Dispatchers.IO) {
-            val snapshot = dbRef.child(USERS_DB_PATH).child(uuid).get().await()
-            val list = snapshot.children.map { it.getValue(StoryStatisticDto::class.java) }
-            val mappedList = StoryStatisticMapper.fromDataToDomainModel(list)
-
-            val existsInDb = mappedList.any { it.storyName == storyName }
-            if (existsInDb) {
-                //increment counter for the item that matches the criteria
-                val mutableList = mappedList.toMutableList().apply {
-                    find { it.storyName == storyName }?.apply {
-                        counter += 1L
-                    }
-                }
-                // update list in realtime db
-                dbRef.child(USERS_DB_PATH).child(uuid).setValue(mutableList).await()
-            } else {
-                val newList = mappedList.plus(StoryStatistic(null, storyName, 1))
-                dbRef.child(USERS_DB_PATH).child(uuid).setValue(newList).await()
-            }
         }
     }
 

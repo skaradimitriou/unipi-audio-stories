@@ -1,6 +1,5 @@
 package com.stathis.unipiaudiostories.models.repo
 
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.DatabaseReference
 import com.stathis.unipiaudiostories.db.StoriesDao
 import com.stathis.unipiaudiostories.db.StoryStatisticsDao
@@ -12,13 +11,11 @@ import com.stathis.unipiaudiostories.models.mapper.StoryMapper
 import com.stathis.unipiaudiostories.models.mapper.StoryStatisticMapper
 import com.stathis.unipiaudiostories.util.FAVORITES_DB_PATH
 import com.stathis.unipiaudiostories.util.STORIES_DB_PATH
-import com.stathis.unipiaudiostories.util.USERS_DB_PATH
+import com.stathis.unipiaudiostories.util.STATISTICS_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -70,7 +67,7 @@ class StoryRepositoryImpl @Inject constructor(
     override suspend fun getStoryStatistics(): Flow<List<StoryStatistic>> = flow {
         authenticator.getActiveUser()?.uid?.let { userId ->
             val cachedList = statisticsDb.getAllStatistics()
-            val snapshot = dbRef.child(USERS_DB_PATH).child(userId).get().await()
+            val snapshot = dbRef.child(STATISTICS_DB_PATH).child(userId).get().await()
             val list = snapshot.children
                 .map { it.getValue(StoryStatisticDto::class.java) }
                 .sortedByDescending { it?.counter }

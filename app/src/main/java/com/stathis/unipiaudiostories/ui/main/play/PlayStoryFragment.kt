@@ -29,6 +29,7 @@ class PlayStoryFragment : BaseFragment<FragmentPlayStoryBinding>(R.layout.fragme
     override fun startOps() {
         viewModel.buttonState.observe(viewLifecycleOwner) { isPlaying ->
             if (isPlaying) {
+                viewModel.incrementCounterOnDb(safeArgs.story.title)
                 tts.speak(safeArgs.story.text)
                 binding.playButton.setImageResource(R.drawable.ic_stop)
             } else {

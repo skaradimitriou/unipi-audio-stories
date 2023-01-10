@@ -38,7 +38,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
             goToPlayNowScreen()
         }
 
-        viewModel.incrementCounterOnDb(safeArgs.story.title)
         viewModel.observe(viewLifecycleOwner)
         viewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
             val drawable = getAppropriateIcon(isFavorite)
