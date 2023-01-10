@@ -2,6 +2,8 @@ package com.stathis.unipiaudiostories.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.view.Menu
+import android.view.MenuItem
 import androidx.core.content.res.ResourcesCompat
 import com.stathis.unipiaudiostories.R
 
@@ -33,5 +35,17 @@ fun getAppropriateIcon(isFavorite: Boolean): Int {
         R.drawable.ic_favorite_red
     } else {
         R.drawable.ic_favorite_white
+    }
+}
+
+/**
+ * Helper fun to get a menu item in a safe way
+ */
+
+fun Menu.getItemOrNull(position: Int): MenuItem? {
+    return try {
+        getItem(position)
+    } catch (e: Exception) {
+        null
     }
 }
