@@ -57,7 +57,6 @@
             style="@style/AppButton"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
-            android:onClick="@{() -> viewModel.logoutUser()}"
             android:text="@string/logout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,6 @@
 package com.stathis.unipiaudiostories.util
 
-import android.app.Activity
+import android.content.Context
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.view.*
@@ -79,10 +79,19 @@ fun Fragment.getDrawable(drawableId: Int): Drawable? {
     return requireContext().getAppDrawable(drawableId)
 }
 
-fun Activity.showLogoutBottomSheet(onButtonClick: () -> Unit) {
+fun Context.showBottomSheet(
+    title: String,
+    primaryBtnText: String,
+    secondaryBtnText: String,
+    onButtonClick: () -> Unit
+) {
     val binding = LogoutBottomsheetBinding.inflate(LayoutInflater.from(this))
     val dialog = BottomSheetDialog(this)
     dialog.setContentView(binding.root)
+
+    binding.titleTxtView.text = title
+    binding.primaryBtn.text = primaryBtnText
+    binding.secondaryBtn.text = secondaryBtnText
 
     binding.primaryBtn.setOnClickListener {
         onButtonClick.invoke()

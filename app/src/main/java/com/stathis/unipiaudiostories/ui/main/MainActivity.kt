@@ -8,7 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.abstraction.BaseActivity
 import com.stathis.unipiaudiostories.databinding.ActivityMainBinding
-import com.stathis.unipiaudiostories.util.showLogoutBottomSheet
+import com.stathis.unipiaudiostories.util.showBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -59,9 +59,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onBackPressed() {
         if (navController.currentDestination?.id == R.id.nav_home) {
-            showLogoutBottomSheet {
-                super.onBackPressed()
-            }
+            showBottomSheet(
+                title = getString(R.string.leaving),
+                primaryBtnText = getString(R.string.exit),
+                secondaryBtnText = getString(R.string.not_now),
+                onButtonClick = { super.onBackPressed() }
+            )
         } else {
             super.onBackPressed()
         }
