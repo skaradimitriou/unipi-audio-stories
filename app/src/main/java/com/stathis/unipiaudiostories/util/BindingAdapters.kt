@@ -36,6 +36,11 @@ fun ImageView.setStoryButton(isPlaying: Boolean) {
     }
 }
 
+@BindingAdapter("setStatisticHeader")
+fun TextView.setStatisticHeader(totalCounter: Long) {
+    text = resources.getString(R.string.statistics_header, totalCounter)
+}
+
 @BindingAdapter("setStatisticNumber")
 fun TextView.setStatisticNumber(counter: Long) {
     text = counter.toString()

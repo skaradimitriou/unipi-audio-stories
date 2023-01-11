@@ -31,6 +31,7 @@
 
     <!-- Statistics Screen -->
     <string name="statistics_title">Meine Statistik</string>
+    <string name="statistics_header">Du hast bisher %d Geschichten in der App gehört.</string>
 
     <!-- Profile Screen -->
     <string name="logged_in_as">Du bist eingeloggt als:</string>

@@ -11,6 +11,7 @@
     <!-- App Color Palette -->
     <color name="dark_blue">#1746A2</color>
     <color name="light_blue">#5F9DF7</color>
+    <color name="info_bg">#c6d2f6</color>
     <color name="sand_bg">#F5F5F5</color>
     <color name="orange">#FF731D</color>
     <color name="grey_bg">#e5e5e5</color>

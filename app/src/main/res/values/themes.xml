@@ -70,6 +70,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_16" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
     <style name="text_16_bold" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/text_16</item>
         <item name="android:textStyle">bold</item>
