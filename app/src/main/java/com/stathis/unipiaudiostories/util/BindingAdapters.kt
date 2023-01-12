@@ -2,6 +2,7 @@ package com.stathis.unipiaudiostories.util
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.stathis.unipiaudiostories.R
@@ -25,6 +26,11 @@ fun ImageView.setImageFromUrl(url: String?) {
 @BindingAdapter("author", "year")
 fun TextView.setStoryAdditionals(author: String?, year: Int?) {
     text = resources.getString(R.string.story_author_year, author, year.toString())
+}
+
+@BindingAdapter("setHtmlText")
+fun TextView.setHtmlText(text: String) {
+    this.text = HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_COMPACT)
 }
 
 @BindingAdapter("setStoryButton")

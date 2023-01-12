@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:padding="@dimen/dimen_s"
-                    android:text="@{model.text}"
+                    app:setHtmlText="@{model.text}"
                     app:layout_constraintTop_toBottomOf="@id/storyKeywordsTxtView"
                     tools:text="@string/lorem_ipsum" />
 
