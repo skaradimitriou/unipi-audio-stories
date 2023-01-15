@@ -7,6 +7,7 @@ import com.stathis.unipiaudiostories.abstraction.BaseFragment
 import com.stathis.unipiaudiostories.databinding.FragmentPlayStoryBinding
 import com.stathis.unipiaudiostories.tts.MyTTsFeatures
 import com.stathis.unipiaudiostories.util.setScreenTitle
+import com.stathis.unipiaudiostories.util.toNonHtmlText
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -30,7 +31,7 @@ class PlayStoryFragment : BaseFragment<FragmentPlayStoryBinding>(R.layout.fragme
         viewModel.buttonState.observe(viewLifecycleOwner) { isPlaying ->
             if (isPlaying) {
                 viewModel.incrementCounterOnDb(safeArgs.story.title)
-                tts.speak(safeArgs.story.text)
+                tts.speak(safeArgs.story.text.toNonHtmlText())
                 binding.playButton.setImageResource(R.drawable.ic_stop)
             } else {
                 binding.playButton.setImageResource(R.drawable.ic_play)
@@ -39,7 +40,9 @@ class PlayStoryFragment : BaseFragment<FragmentPlayStoryBinding>(R.layout.fragme
         }
     }
 
-    override fun stopOps() {}
+    override fun stopOps() {
+        tts.stop()
+    }
 
     override fun onDestroy() {
         super.onDestroy()

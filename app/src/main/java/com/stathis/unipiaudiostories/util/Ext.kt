@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.text.HtmlCompat
 import com.stathis.unipiaudiostories.R
 
 /**
@@ -48,4 +49,11 @@ fun Menu.getItemOrNull(position: Int): MenuItem? {
     } catch (e: Exception) {
         null
     }
+}
+
+/**
+ * Helper fun to get a string in a non html format.
+ */
+fun String.toNonHtmlText(): String {
+    return HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT).toString()
 }
