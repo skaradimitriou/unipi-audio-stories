@@ -1,12 +1,16 @@
 package com.stathis.unipiaudiostories.util
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
+import com.bumptech.glide.Glide
 import com.stathis.unipiaudiostories.R
+import java.io.ByteArrayOutputStream
 
 /**
  * This file contains the extension functions that are used across the app
@@ -56,4 +60,17 @@ fun Menu.getItemOrNull(position: Int): MenuItem? {
  */
 fun String.toNonHtmlText(): String {
     return HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT).toString()
+}
+
+fun ImageView.loadUserImage(imageUrl: String) {
+    Glide.with(context).load(imageUrl)
+        .placeholder(R.drawable.empty_profile_photo)
+        .error(R.drawable.empty_profile_photo)
+        .into(this)
+}
+
+fun Bitmap.compressBitmap(): ByteArray {
+    val baos = ByteArrayOutputStream()
+    this.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+    return baos.toByteArray()
 }

@@ -1,16 +1,22 @@
 package com.stathis.unipiaudiostories.util
 
+import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.view.*
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.MenuProvider
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
+import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.databinding.LogoutBottomsheetBinding
 
 /**
@@ -102,4 +108,13 @@ fun Context.showBottomSheet(
         dialog.dismiss()
     }
     dialog.show()
+}
+
+fun Fragment.onSuccessCameraResult(data: (Bitmap?) -> Unit) = registerForActivityResult(
+    ActivityResultContracts.StartActivityForResult()
+) { result ->
+    if (result.resultCode == Activity.RESULT_OK) {
+        val bitmap = result.data?.extras?.get("data") as? Bitmap
+        data.invoke(bitmap)
+    }
 }

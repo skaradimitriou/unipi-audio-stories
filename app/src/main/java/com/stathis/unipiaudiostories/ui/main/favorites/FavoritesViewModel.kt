@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.domain.Story
-import com.stathis.unipiaudiostories.models.repo.StoryRepositoryImpl
+import com.stathis.unipiaudiostories.models.repository.stories.StoryRepositoryImpl
 import com.stathis.unipiaudiostories.ui.main.intro.StoriesAdapter
 import com.stathis.unipiaudiostories.ui.main.intro.StoryCallback
 import dagger.hilt.android.lifecycle.HiltViewModel

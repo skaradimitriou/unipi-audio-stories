@@ -1,4 +1,4 @@
-package com.stathis.unipiaudiostories.models.repo
+package com.stathis.unipiaudiostories.models.repository.stories
 
 import com.stathis.unipiaudiostories.models.domain.Story
 import com.stathis.unipiaudiostories.models.domain.StoryStatistic

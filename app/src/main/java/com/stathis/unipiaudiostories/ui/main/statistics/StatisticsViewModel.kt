@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.abstraction.UiModel
 import com.stathis.unipiaudiostories.models.domain.StatisticHeader
-import com.stathis.unipiaudiostories.models.repo.StoryRepository
+import com.stathis.unipiaudiostories.models.repository.stories.StoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

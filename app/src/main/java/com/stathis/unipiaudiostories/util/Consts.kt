@@ -7,6 +7,9 @@ package com.stathis.unipiaudiostories.util
 const val STORIES_DB_PATH = "stories"
 const val STATISTICS_DB_PATH = "statistics"
 const val FAVORITES_DB_PATH = "favorites"
+const val USERS_DB_PATH = "users"
+
+const val DOWNLOAD_LINK = "downloadLink"
 
 /*
  * TTs

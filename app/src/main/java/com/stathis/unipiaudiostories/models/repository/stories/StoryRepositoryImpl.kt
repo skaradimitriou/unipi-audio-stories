@@ -1,4 +1,4 @@
-package com.stathis.unipiaudiostories.models.repo
+package com.stathis.unipiaudiostories.models.repository.stories
 
 import com.google.firebase.database.DatabaseReference
 import com.stathis.unipiaudiostories.db.StoriesDao

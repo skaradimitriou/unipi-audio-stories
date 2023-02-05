@@ -1,10 +1,12 @@
 package com.stathis.unipiaudiostories.ui.main.profile
 
 import android.app.Application
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
+import com.stathis.unipiaudiostories.models.repository.profile.ProfileRepository
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val authenticator: Authenticator,
+    private val repo: ProfileRepository,
     app: Application
 ) : BaseViewModel(app) {
 
@@ -21,6 +24,11 @@ class ProfileViewModel @Inject constructor(
         get() = _userEmail
 
     private val _userEmail = MutableLiveData<String>()
+
+    val userImg: LiveData<String>
+        get() = _userImg
+
+    private val _userImg = MutableLiveData<String>()
 
     val userLoggedOut: LiveData<Boolean>
         get() = _userLoggedOut
@@ -37,5 +45,21 @@ class ProfileViewModel @Inject constructor(
     fun logoutUser() {
         authenticator.logout()
         _userLoggedOut.postValue(true)
+    }
+
+    fun getUserImage() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.getUserImage().collect {
+                _userImg.postValue(it)
+            }
+        }
+    }
+
+    fun uploadImage(bitmap: Bitmap) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.saveUserImage(bitmap).collect {
+                _userImg.postValue(it)
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ import com.google.mlkit.vision.label.ImageLabeling
 import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.domain.Story
-import com.stathis.unipiaudiostories.models.repo.StoryRepositoryImpl
+import com.stathis.unipiaudiostories.models.repository.stories.StoryRepositoryImpl
 import com.stathis.unipiaudiostories.util.FAVORITES_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
 import dagger.hilt.android.lifecycle.HiltViewModel
