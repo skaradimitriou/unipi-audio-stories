@@ -13,13 +13,13 @@ interface AuthManager {
      * Register feature
      */
 
-    suspend fun register(email: String, pass: String): Result
+    suspend fun register(email: String, pass: String): Result<FirebaseUser>
 
     /**
      * Login Feature
      */
 
-    suspend fun login(email: String, pass: String): Result
+    suspend fun login(email: String, pass: String): Result<FirebaseUser>
 
     /**
      * Returns whether or not there is a user active at the moment.

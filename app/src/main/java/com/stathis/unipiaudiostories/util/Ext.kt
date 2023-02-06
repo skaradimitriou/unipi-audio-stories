@@ -58,16 +58,24 @@ fun Menu.getItemOrNull(position: Int): MenuItem? {
 /**
  * Helper fun to get a string in a non html format.
  */
+
 fun String.toNonHtmlText(): String {
     return HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT).toString()
 }
 
+/**
+ * Helper fun to load user's image into the [ImageView].
+ */
+
 fun ImageView.loadUserImage(imageUrl: String) {
     Glide.with(context).load(imageUrl)
-        .placeholder(R.drawable.empty_profile_photo)
         .error(R.drawable.empty_profile_photo)
         .into(this)
 }
+
+/**
+ * Helper fun to compress a Bitmap.
+ */
 
 fun Bitmap.compressBitmap(): ByteArray {
     val baos = ByteArrayOutputStream()

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.util.GENERIC_ERROR
@@ -23,12 +24,13 @@ class RegisterViewModel @Inject constructor(
      * LiveData that holds the Result of the registration FirebaseAuth transaction.
      */
 
-    val registrationResult: LiveData<Result>
+    val registrationResult: LiveData<Result<FirebaseUser>>
         get() = _registrationResult
 
-    private val _registrationResult = MutableLiveData<Result>()
+    private val _registrationResult = MutableLiveData<Result<FirebaseUser>>()
 
     fun validateData(email: String, pass: String, confirmPass: String) {
+        _registrationResult.postValue(Result.Loading())
         viewModelScope.launch(Dispatchers.IO) {
             val isPassValid = pass == confirmPass && pass.isNotEmpty() && confirmPass.isNotEmpty()
             if (email.isNotEmpty() && isPassValid) {

@@ -32,8 +32,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
         viewModel.loginResult.observe(viewLifecycleOwner) { result ->
             when (result) {
+                is Result.Loading -> binding.loginBtn.isEnabled = false
                 is Result.Success -> goToDashboard()
-                is Result.Failure -> binding.showSnackbar(result.message)
+                is Result.Failure -> {
+                    binding.loginBtn.isEnabled = true
+                    binding.showSnackbar(result.error.toString())
+                }
             }
         }
     }

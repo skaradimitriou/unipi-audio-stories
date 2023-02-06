@@ -21,7 +21,7 @@ class Authenticator @Inject constructor(
      * Attempts to register a user (email, pass) async and returns the result.
      */
 
-    override suspend fun register(email: String, pass: String): Result {
+    override suspend fun register(email: String, pass: String): Result<FirebaseUser> {
         try {
             val task = auth.createUserWithEmailAndPassword(email, pass).await()
             task.user?.let {
@@ -38,7 +38,7 @@ class Authenticator @Inject constructor(
      * Attempts to login a user (email, pass) async and returns the result.
      */
 
-    override suspend fun login(email: String, pass: String): Result {
+    override suspend fun login(email: String, pass: String): Result<FirebaseUser> {
         try {
             val task = auth.signInWithEmailAndPassword(email, pass).await()
             task.user?.let {

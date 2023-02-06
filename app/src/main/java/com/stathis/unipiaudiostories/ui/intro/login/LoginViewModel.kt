@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
 import com.stathis.unipiaudiostories.abstraction.BaseViewModel
 import com.stathis.unipiaudiostories.models.domain.Result
 import com.stathis.unipiaudiostories.util.GENERIC_ERROR
@@ -23,10 +24,10 @@ class LoginViewModel @Inject constructor(
      * LiveData that holds the Result of the login FirebaseAuth transaction.
      */
 
-    val loginResult: LiveData<Result>
+    val loginResult: LiveData<Result<FirebaseUser>>
         get() = _loginResult
 
-    private val _loginResult = MutableLiveData<Result>()
+    private val _loginResult = MutableLiveData<Result<FirebaseUser>>()
 
     fun login(email: String, pass: String) {
         viewModelScope.launch(Dispatchers.IO) {

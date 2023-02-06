@@ -6,17 +6,14 @@ import android.graphics.Bitmap
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.view.*
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.MenuProvider
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
-import com.stathis.unipiaudiostories.R
 import com.stathis.unipiaudiostories.databinding.LogoutBottomsheetBinding
 
 /**
@@ -27,9 +24,17 @@ fun Fragment.setScreenTitle(title: String) {
     requireActivity().title = title
 }
 
+/**
+ * Helper method to show a simple [Snackbar].
+ */
+
 fun ViewDataBinding.showSnackbar(message: String) {
     Snackbar.make(this.root, message, Snackbar.LENGTH_LONG).show()
 }
+
+/**
+ * Helper method to setup a vertical [RecyclerView].
+ */
 
 fun RecyclerView.setVerticalRecycler(topDimen: Int, horizontalDimen: Int) {
     setHasFixedSize(true)
@@ -109,6 +114,10 @@ fun Context.showBottomSheet(
     }
     dialog.show()
 }
+
+/**
+ * Helper fun to simplify the activity result api for Camera purposes.
+ */
 
 fun Fragment.onSuccessCameraResult(data: (Bitmap?) -> Unit) = registerForActivityResult(
     ActivityResultContracts.StartActivityForResult()
