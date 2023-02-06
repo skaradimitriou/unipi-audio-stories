@@ -44,7 +44,10 @@ fun ImageView.setStoryButton(isPlaying: Boolean) {
 
 @BindingAdapter("setStatisticHeader")
 fun TextView.setStatisticHeader(totalCounter: Long) {
-    text = resources.getString(R.string.statistics_header, totalCounter)
+    text = when(totalCounter) {
+        0L -> resources.getString(R.string.empty_statistics_header)
+        else -> resources.getString(R.string.statistics_header, totalCounter)
+    }
 }
 
 @BindingAdapter("setStatisticNumber")

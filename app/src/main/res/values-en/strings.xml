@@ -32,6 +32,7 @@
     <!-- Statistics Screen -->
     <string name="statistics_title">My statistics</string>
     <string name="statistics_header">You have heard %d stories so far in the app.</string>
+    <string name="empty_statistics_header">You haven\'t heard any story in the app yet.</string>
 
     <!-- Profile Screen -->
     <string name="logged_in_as">You are logged in as:</string>

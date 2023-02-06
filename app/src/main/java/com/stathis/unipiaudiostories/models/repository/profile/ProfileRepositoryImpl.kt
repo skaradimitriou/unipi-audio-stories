@@ -3,6 +3,8 @@ package com.stathis.unipiaudiostories.models.repository.profile
 import android.graphics.Bitmap
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.StorageReference
+import com.stathis.unipiaudiostories.db.StoriesDao
+import com.stathis.unipiaudiostories.db.StoryStatisticsDao
 import com.stathis.unipiaudiostories.util.DOWNLOAD_LINK
 import com.stathis.unipiaudiostories.util.USERS_DB_PATH
 import com.stathis.unipiaudiostories.util.authmanager.Authenticator
@@ -15,6 +17,8 @@ class ProfileRepositoryImpl @Inject constructor(
     private val authenticator: Authenticator,
     private val dbRef: DatabaseReference,
     private val storage: StorageReference,
+    private val storiesDb: StoriesDao,
+    private val statisticsDb: StoryStatisticsDao,
 ) : ProfileRepository {
 
     override suspend fun saveUserImage(bitmap: Bitmap) = flow {
@@ -41,5 +45,10 @@ class ProfileRepositoryImpl @Inject constructor(
             .value.toString()
 
         emit(imageUrl)
+    }
+
+    override suspend fun clearLocalData() {
+        storiesDb.deleteAll()
+        statisticsDb.deleteAll()
     }
 }

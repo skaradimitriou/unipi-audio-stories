@@ -32,6 +32,7 @@
     <!-- Statistics Screen -->
     <string name="statistics_title">Τα Στατιστικά μου</string>
     <string name="statistics_header">Έχεις ακούσει συνολικά %d ιστορίες στην εφαρμογή.</string>
+    <string name="empty_statistics_header">Δεν έχεις ακούσει κάποια ιστορία στην εφαρμογή ακόμη.</string>
 
     <!-- Profile Screen -->
     <string name="logged_in_as">Έχετε συνδεθεί ώς:</string>

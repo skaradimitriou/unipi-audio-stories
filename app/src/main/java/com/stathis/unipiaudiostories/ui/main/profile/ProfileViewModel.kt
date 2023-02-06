@@ -43,8 +43,11 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun logoutUser() {
-        authenticator.logout()
-        _userLoggedOut.postValue(true)
+        viewModelScope.launch(Dispatchers.IO) {
+            authenticator.logout()
+            _userLoggedOut.postValue(true)
+            repo.clearLocalData()
+        }
     }
 
     fun getUserImage() {

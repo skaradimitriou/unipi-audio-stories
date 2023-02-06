@@ -8,4 +8,6 @@ interface ProfileRepository {
     suspend fun saveUserImage(bitmap: Bitmap) : Flow<String>
 
     suspend fun getUserImage(): Flow<String>
+
+    suspend fun clearLocalData()
 }

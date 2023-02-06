@@ -42,9 +42,11 @@ object AppModule {
     fun provideProfileRepository(
         authenticator: Authenticator,
         dbRef: DatabaseReference,
-        storage: StorageReference
+        storage: StorageReference,
+        storiesDao: StoriesDao,
+        storyStatisticsDao: StoryStatisticsDao
     ): ProfileRepository {
-        return ProfileRepositoryImpl(authenticator, dbRef, storage)
+        return ProfileRepositoryImpl(authenticator, dbRef, storage, storiesDao, storyStatisticsDao)
     }
 
     @Provides
