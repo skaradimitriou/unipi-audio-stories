@@ -1,7 +1,6 @@
 package com.stathis.unipiaudiostories.ui.main
 
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -14,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private val viewModel: MainViewModel by viewModels()
     private lateinit var navController: NavController
 
     override fun init() {
@@ -23,7 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     override fun startOps() {
-        navController.addOnDestinationChangedListener { controller, destination, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.nav_home || destination.id == R.id.nav_favorites || destination.id == R.id.nav_statistics || destination.id == R.id.nav_profile) {
                 //disable action bar back button
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
