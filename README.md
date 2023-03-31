@@ -1,6 +1,14 @@
 # Unipi Audio Stories
 
+Unipi Audio Stories is a simple greek fairytales app developed for my MSc studies.
 
+The user can:
+1. Register/Login
+2. Browse a list of stories
+3. Read about a story
+4. Have a TextToSpeech engine read it out loud for him
+5. Add story as his favorite
+6. View his favorites or stories statistics
 
 ### Programming Language 
 
