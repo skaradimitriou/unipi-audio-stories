@@ -1,6 +1,9 @@
 # Unipi Audio Stories
+<p align="center">
+  <img width="100" src="https://user-images.githubusercontent.com/64270931/229101809-2fba8511-4c71-410e-b629-cf73d072ed14.png" alt="audio_book_logo_round"><br>
+  <b>Unipi Audio Stories is a simple greek fairytales app</b> developed for my MSc studies.
+</p>
 
-Unipi Audio Stories is a simple greek fairytales app developed for my MSc studies.
 
 The user can:
 1. Register/Login
@@ -22,16 +25,15 @@ Model - View - ViewModel (MVVM)
 - Kotlin Coroutines <br/>
 - Data Binding
 
-### Theme 
-
-[Material Design](https://material.io/)
-
 ### Libraries
 
 [Hilt]() for dependency Injection <br/>
+[Firebase Authentication]() for the users authentication <br/>
 [Firebase Realtime Database]() as an online database <br/>
 [Room]() as a local database <br/>
+[Firebase Storage]() to store any necessary stories media content <br/>
 [Gson](https://github.com/google/gson) for serialization/deserialization </br>
 [Glide](https://github.com/bumptech/glide) to load images <br/> 
 [Shimmer Loading](https://facebook.github.io/shimmer-android/) to implement loading effect <br/>
-[Timber](https://github.com/JakeWharton/timber) for logging
+[Timber](https://github.com/JakeWharton/timber) for logging across the app
+Built with [Material Design](https://material.io/)
