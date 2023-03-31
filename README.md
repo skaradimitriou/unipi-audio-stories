@@ -4,6 +4,15 @@
   <b>Unipi Audio Stories is a simple greek fairytales app</b> developed for my MSc studies.
 </p>
 
+<video width="320" height="240" controls>
+  <source src="" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+
+[![Demo  Unipi Audio Stories](https://user-images.githubusercontent.com/64270931/229106173-4910610a-0162-425b-bbda-96a25ecd181c.gif)](https://user-images.githubusercontent.com/64270931/229104760-ebc5a0dc-1609-424e-a9f6-061d04ac5cdc.mp4)
+
+<br><br>
 
 The user can:
 1. Register/Login
